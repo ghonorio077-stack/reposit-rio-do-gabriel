@@ -3,8 +3,8 @@
 
 
 @font-face {
-    font-family: 'android';
-    src: url('/desafiosem17/fontes/idroid.otf') format(opentype);
+    font-family: 'Android';
+    src: url('../fontes/idroid.otf') format(opentype);
     font-weight: normal;
 }
 
@@ -12,7 +12,7 @@
 :root {
     --cor0: #9da076b6;
     --fonte-padrao: Arial, Helvetica, sans-serif;
-    --fonte-android: 'android', cursive;
+    --fonte-android: 'Android', cursive;
     --fonte-destaque:'Bebas Neue', cursive;
 }
 
@@ -41,6 +41,7 @@ header h1 {
     font-size: 2em;
     margin-bottom: 15px;
     font-family: var(--fonte-destaque);
+    text-shadow: 2px 2px 0px black;
 }
 
 header h2 {
@@ -59,12 +60,14 @@ nav a{
     text-decoration: none;
     font-weight: bold;
     margin-right: 10px;
+    transition-duration: .3s;
 }
 
 nav a:hover{
     background-color: #2fa866;
     padding: 5px;
     border-radius: 8px;
+    
 }
 
 main{
@@ -93,12 +96,6 @@ main h2{
     font-family: var(--fonte-android);
 }
 
-p{
-    text-align: justify;
-    line-height: 1.6em;
-    margin: 15px 0px;
-    text-indent: 30px;
-}
 
 main a{
     color: #063d1e;
@@ -109,6 +106,18 @@ main a{
 
 main a:hover{
     text-decoration: underline;
+}
+
+main img.pequena{
+    width: 50%;
+    margin: auto;
+}
+
+p{
+    text-align: justify;
+    line-height: 1.6em;
+    margin: 15px 0px;
+    text-indent: 30px;
 }
 
 img {
