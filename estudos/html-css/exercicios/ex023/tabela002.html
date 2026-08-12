@@ -20,28 +20,36 @@
             }
 
             thead, tfoot{
-                background-color: gray;
+                background-color: rgb(77, 76, 76);
                 color: white;
             }
 
             td.num{
                 text-align: right;
             }
+
+            caption{
+                font-size: 1.5em;
+                font-weight: bold;
+                padding: 10px;
+                background-color: rgb(182, 182, 182);
+            }
     </style>
 </head>
 <body>
     <h1>Uso de tabelas grandes</h1>
     <table>
+        <caption>População das unidades federativas do Brasil</caption>
         <thead>
             <tr>
-                <th>Estado</th>
-                <th>População</th>
+                <th scope="col">Estado</th>
+                <th scope="col" style="width: 100px;"> População</th>
             </tr>
         </thead>
 
         <tbody>
             <tr>
-                <td>São Paulo</td>
+                <td >São Paulo</td>
                 <td class="num">46.081.801</td>
             </tr>
             <tr>
@@ -152,7 +160,7 @@
 
         <tfoot>
             <tr>
-                <th>Total de habitantes</th>
+                <th scope="row">Total de habitantes</th>
                 <td class="num"><strong>213 421 037</strong></td>
             </tr>
         </tfoot>
