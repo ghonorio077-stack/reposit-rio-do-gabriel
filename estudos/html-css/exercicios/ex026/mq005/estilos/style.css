@@ -76,6 +76,10 @@ article h2{
     padding-bottom: 20px;
 }
 
+article h3{
+    padding-bottom: 10px;
+}
+
 article p{
     text-align: justify;
     margin-bottom: 20px;
