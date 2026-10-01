@@ -1,0 +1,44 @@
+@charset "UTF-8";
+
+header, header nav{
+    flex-flow: column nowrap;
+}
+
+header h1{
+    flex-basis: 40px;
+}
+
+header nav a{
+    width: 90vw;
+}
+
+
+/* Esconde as opções do menu por padrão no mobile */
+header nav {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+
+i#burguer{
+    background-color: gray;
+    color: white;
+    display: block;
+    text-align: center;
+    padding: 10px;
+    cursor: pointer;
+}
+
+i#burguer:hover{
+    background-color: white;
+    color: black;
+    border-radius: 5px;
+}
