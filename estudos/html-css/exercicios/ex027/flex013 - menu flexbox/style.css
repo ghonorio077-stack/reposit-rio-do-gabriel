@@ -41,13 +41,14 @@ header{
 }
 
 header h1{
-    border: 1px dotted black;
+    /*border: 1px dotted black;*/
     flex: 0 0 200px;
     text-align: center;
+    text-shadow: 1px 1px 3px black;
 }
 
 header nav{
-    border: 1px dotted black;
+    /*border: 1px dotted black;*/
 
     flex-flow: row wrap;
     display: flex;
