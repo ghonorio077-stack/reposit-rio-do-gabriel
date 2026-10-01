@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Flexbox Responsivo com Transição</title>
+    
+    <!-- Google Material Symbols para o ícone de hambúrguer/fechar -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --bg-dark: #0f172a;
+            --card-bg: #1e293b;
+            --text-light: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #38bdf8;
+            --transition-speed: 0.5s;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: #0b0f19;
+            color: var(--text-light);
+            min-height: 100vh;
+            width: 100%;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background-color: var(--bg-dark);
+            border-bottom: 1px solid #1e293b;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-light);
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        /* Botão do Hambúrguer */
+        #burguer {
+            display: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 8px;
+            background-color: #1e293b;
+            color: var(--text-light);
+            user-select: none;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        #burguer:hover {
+            background-color: #334155;
+            color: var(--accent);
+        }
+
+        /* Menu de Navegação - Desktop */
+        nav#menu {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        nav#menu a {
+            color: var(--text-muted);
+            text-decoration: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        nav#menu a:hover, nav#menu a.active {
+            color: var(--text-light);
+            background-color: rgba(255, 255, 255, 0.08);
+        }
+
+        nav#menu a.btn-cta {
+            background-color: var(--primary);
+            color: white;
+            font-weight: 600;
+            margin-left: 0.5rem;
+        }
+
+        nav#menu a.btn-cta:hover {
+            background-color: var(--primary-hover);
+        }
+
+        main {
+            max-width: 1200px;
+            width: 100%;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .bloco {
+            background-color: var(--card-bg);
+            border: 1px solid #334155;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+        }
+
+        .bloco h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .bloco p {
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .bloco p:last-child {
+            margin-bottom: 0;
+        }
+
+        @media screen and (max-width: 768px) {
+            #burguer {
+                display: block; /* Exibe o hambúrguer no mobile */
+            }
+
+            nav#menu {
+                /* Configurações para a Transição Suave no Mobile */
+                width: 100%;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0.25rem;
+                
+                /* Estado Fechado */
+                max-height: 0;
+                opacity: 0;
+                overflow: hidden;
+                transform: translateY(-10px);
+                
+                /* Transição Suave de 0.5 segundos */
+                transition: max-height var(--transition-speed) ease-in-out,
+                            opacity var(--transition-speed) ease-in-out,
+                            transform var(--transition-speed) ease-in-out,
+                            padding var(--transition-speed) ease-in-out;
+                
+                padding-top: 0;
+                padding-bottom: 0;
+            }
+
+            /* Estado Aberto (Classe togglada via JS) */
+            nav#menu.open {
+                max-height: 400px; /* Altura máxima suficiente para revelar todas as opções */
+                opacity: 1;
+                transform: translateY(0);
+                padding-top: 1rem;
+                padding-bottom: 0.5rem;
+            }
+
+            nav#menu a {
+                padding: 0.8rem 1rem;
+                text-align: center;
+                background-color: rgba(15, 23, 42, 0.6);
+                border: 1px solid rgba(255, 255, 255, 0.05);
+            }
+
+            nav#menu a.btn-cta {
+                margin-left: 0;
+                margin-top: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body onresize="mudouTamanho()">
+
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <span class="material-symbols-outlined">rocket_launch</span>
+                Meu<span>Site</span>
+            </div>
+
+            <!-- Ícone de hambúrguer com acionamento do clique -->
+            <i id="burguer" class="material-symbols-outlined" onclick="clickMenu()">menu</i>
+
+            <!-- Navegação com classe para controle da animação -->
+            <nav id="menu">
+                <a href="#" class="active">Início</a>
+                <a href="#">Recursos</a>
+                <a href="#">Serviços</a>
+                <a href="#">Sobre Nós</a>
+                <a href="#">Contato</a>
+                <a href="#" class="btn-cta">Começar Agora</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="bloco">
+            <h2>Teste de Flexbox & Transições - Bloco 1</h2>
+            <p>Clique no ícone de menu no modo mobile (ou diminuindo a largura da janela) para observar a abertura e o fechamento com <strong>transição suave de 0.5s</strong>.</p>
+            <p>Para conseguir esse efeito, em vez de alterar a propriedade <code>display</code> diretamente (que impede animações), usamos uma combinação de <code>max-height</code>, <code>opacity</code> e <code>transform: translateY()</code>.</p>
+        </section>
+
+        <section class="bloco">
+            <h2>Demonstração Responsiva - Bloco 2</h2>
+            <p>Quando a tela é redimensionada de volta para o tamanho Desktop (acima de 768px), o código remove automaticamente o estado aberto do menu mobile, garantindo que o cabeçalho volte ao seu layout horizontal original sem erros de layout.</p>
+        </section>
+    </main>
+
+    <script>
+        const menu = document.getElementById('menu');
+        const iconeBurguer = document.getElementById('burguer');
+
+        /**
+         * Alterna o estado do menu (Aberto / Fechado) adicionando/removendo a classe '.open'
+         */
+        function clickMenu() {
+            menu.classList.toggle('open');
+            
+            // Alterna o ícone de hambúrguer para 'close' (X) com animação simples
+            if (menu.classList.contains('open')) {
+                iconeBurguer.textContent = 'close';
+            } else {
+                iconeBurguer.textContent = 'menu';
+            }
+        }
+
+        /**
+         * Garante que o menu volte ao normal se o usuário redimensionar a tela
+         */
+        function mudouTamanho() {
+            if (window.innerWidth > 768) {
+                // Remove a classe open se voltar para desktop
+                menu.classList.remove('open');
+                iconeBurguer.textContent = 'menu';
+            }
+        }
+    </script>
+</body>
+</html>
