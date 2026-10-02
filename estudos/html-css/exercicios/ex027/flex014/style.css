@@ -1,2 +1,114 @@
 @charset "UTF-8";
 
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1em;
+    line-height: 1.5em;
+}
+
+p {
+    margin-bottom: 10px;
+    text-align: justify;
+}
+
+body h1, h2{
+    margin-bottom: 20px;
+    text-align: center;
+    line-height: 1.2em;
+}
+
+header, .normal{
+    padding: 20px;
+    text-align: left;
+}
+
+.flex-content{
+    background-color: rgb(160, 159, 159);
+    padding: 20px;
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 30px; /* Dá espaço entre os artigos */
+}
+
+/* Regra geral para ambos os artigos */
+ .text-media {
+    display: flex;
+    flex-direction: row; /* Coloca o texto no lado esquerdo e o vídeo no direito */
+    align-items: center;
+    gap: 20px;
+}
+
+/* No media-text, inverter a ordem dos elementos usando flex-direction */
+.media-text {
+    display: flex;
+    flex-direction: row-reverse; /* Coloca a imagem no lado esquerdo e o texto no direito */
+    align-items: center;
+    gap: 20px;
+}
+
+article .text{
+    flex: 1 1 300px; /* Flexível, encolhe e cresce com base mínima de 300px */
+}
+
+article .media{
+    flex: 1 1 300px;
+    text-align: center;
+}
+
+/* Deixando a imagem e o iframe 100% fluidos */
+.media img {
+    display: block;
+    margin: auto;
+    max-width: 100%;
+    height: auto;
+}
+
+.media iframe {
+    display: block;
+    margin: auto;
+    width: 100%;
+    max-width: 560px; /* Limita ao tamanho máximo padrão do YouTube */
+    aspect-ratio: 16 / 9; /* Mantém a proporção do vídeo de forma moderna */
+    height: auto;
+}
+
+.normal h2{
+    text-align: left;
+}
+
+footer{
+    background-color: black;
+    color: white;
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding: 10px;
+    width: 100%;
+}
+
+footer p{
+    text-align: center; 
+    margin-bottom: 0px;
+}
+
+
+
+
+
+
+
+@media (max-width: 768px) {
+    .media-text {
+        flex-direction: column-reverse; /* No celular, a imagem sobe para cima do texto */
+    }
+
+    .text-media {
+        flex-direction: column; /* No celular, o texto fica em cima e o vídeo embaixo */
+    }
+
+}
